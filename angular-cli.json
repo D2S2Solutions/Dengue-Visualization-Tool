@@ -18,7 +18,11 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/nprogress/nprogress.css",
+        "../node_modules/bootstrap-daterangepicker/daterangepicker.css"
       ],
       "scripts": ["../node_modules/jquery/dist/jquery.js",
       "../node_modules/bootstrap/dist/js/bootstrap.js",
