@@ -1,0 +1,22 @@
+{
+  "name": "dengue-visualization",
+  "description": "dengue visualization application",
+  "main": "karma.conf.js",
+  "authors": [
+    "HeshanSandamal <mhsandamal.13@cse.mrt.ac.lk>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/D2S2Solutions/DengueVisualization",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "DateJS": "datejs#^1.0.0-rc3",
+    "flot-spline": "^0.8.2",
+    "flot.curvedlines": "^1.1.1"
+  }
+}
