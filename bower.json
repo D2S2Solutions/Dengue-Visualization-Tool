@@ -17,6 +17,8 @@
   "dependencies": {
     "DateJS": "datejs#^1.0.0-rc3",
     "flot-spline": "^0.8.2",
-    "flot.curvedlines": "^1.1.1"
+    "flot.curvedlines": "^1.1.1",
+    "jquery": "^3.2.1",
+    "Flot": "flot#^0.8.3"
   }
 }
