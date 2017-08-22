@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-console.log("jsdfsd");
 
 @Component({
   selector: 'app-sidebar',

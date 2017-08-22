@@ -5,16 +5,18 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AppSidebarComponent} from './sidebar/app.sidebar';
+import {ChartModule} from 'angular2-chartjs';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
