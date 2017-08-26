@@ -8,7 +8,7 @@ import {AppSidebarComponent} from './sidebar/app.sidebar';
 import {ChartModule} from 'angular2-chartjs';
 import { GraphComponent } from './graph/graph.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import {GraphDataService} from './graph/graph-data.service';
+import {GraphDataService} from './graph/shared/graph-data.service';
 
 @NgModule({
   declarations: [

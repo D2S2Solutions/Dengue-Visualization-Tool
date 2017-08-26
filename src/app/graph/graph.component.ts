@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GraphDataService} from './graph-data.service';
+import {GraphDataService} from './shared/graph-data.service';
+import {Prediction} from './shared/prediction';
 
 @Component({
   selector: 'app-graph',
@@ -11,7 +12,8 @@ export class GraphComponent implements OnInit {
   dataArray: any = [[1, 3], [2, 14.01], [3.5, 3.14]];
   type = 'line';
 
-  annGraphData: number[];
+  annGraphData: any[] = [1, 2,3
+    ,4,5,6,7,8,9,10,11,12,13, 14];
 
   data: any;
 
@@ -21,13 +23,41 @@ export class GraphComponent implements OnInit {
     maintainAspectRatio: false,
     bezierCurve : false
   };
+  private errorMessage: any;
 
   constructor(private graphService: GraphDataService) {
 
-    this.annGraphData = graphService.getANNResults();
+    this.getPosts();
 
+    // this.setGraphData();
+   // setTimeout(() => this.setGraphData(), 4000 );
+
+  }
+
+  ngOnInit() {
+  }
+
+  getPosts() {
+    // alert('calling backend');
+    // this.graphService.getPosts().map(data => this.annGraphData = data);
+      this.graphService.getResults()
+        .subscribe(
+          (response) => {
+            this.annGraphData = response;
+            this.setGraphData();
+          },
+          function(error) { alert('Error happened' + error); }
+          // posts => this.annGraphData = posts,
+        );
+    // alert(this.annGraphData);
+  }
+
+
+  public setGraphData() {
+    console.log('settting graph data' + this.annGraphData);
     this.data = {
-      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+      labels: [1, 2,3
+        ,4,5,6,7,8,9,10,11,12,13, 14],
       datasets: [
         {
           label: 'ANN',
@@ -66,10 +96,5 @@ export class GraphComponent implements OnInit {
       borderWidth: 1,
 
     };
-
   }
-
-  ngOnInit() {
-  }
-
 }
