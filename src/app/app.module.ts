@@ -8,7 +8,16 @@ import {AppSidebarComponent} from './sidebar/app.sidebar';
 import {ChartModule} from 'angular2-chartjs';
 import { GraphComponent } from './graph/graph.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import {GraphDataService} from './graph/shared/graph-data.service';
+import {GraphDataService} from './services/graph-data.service';
+import { GraphClassificationComponent } from './graph-classification/graph-classification.component';
+import {RouterModule, Routes} from '@angular/router';
+import { MobHeatmapComponent } from './mob-heatmap/mob-heatmap.component';
+
+const appRoutes: Routes = [
+  { path: 'regression', component: GraphComponent },
+  { path: 'classification', component: GraphClassificationComponent },
+  { path: 'mobility', component: MobHeatmapComponent },
+];
 
 @NgModule({
   declarations: [
@@ -16,14 +25,21 @@ import {GraphDataService} from './graph/shared/graph-data.service';
     AppSidebarComponent,
     GraphComponent,
     NavigationComponent,
+    GraphClassificationComponent,
+    MobHeatmapComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ChartModule
+    ChartModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [GraphDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

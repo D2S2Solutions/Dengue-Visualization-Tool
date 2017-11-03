@@ -39,7 +39,8 @@
         "../bower_components/flot.curvedlines/curvedLines.js",
         "../bower_components/DateJS/build/date.js",
         "../node_modules/moment/moment.js",
-        "../node_modules/daterangepicker/daterangepicker.js"
+        "../node_modules/daterangepicker/daterangepicker.js",
+        "../node_modules/angular2-chartjs/dist/chart.component.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
