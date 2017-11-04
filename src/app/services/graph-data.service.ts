@@ -58,6 +58,34 @@ export class GraphDataService {
       .catch(this.handleError);
   }
 
+  getXGBClassifications (): Observable<any> {
+    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=7';
+    return this.http.get(url)
+      .map(this.parseData)
+      .catch(this.handleError);
+  }
+
+  getMLPClassifications (): Observable<any> {
+    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=6';
+    return this.http.get(url)
+      .map(this.parseData)
+      .catch(this.handleError);
+  }
+
+  getRFClassifications (): Observable<any> {
+    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=8';
+    return this.http.get(url)
+      .map(this.parseData)
+      .catch(this.handleError);
+  }
+
+  getActualClassifications (): Observable<any> {
+    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=9';
+    return this.http.get(url)
+      .map(this.parseData)
+      .catch(this.handleError);
+  }
+
 
   // This method parses the data to JSON
   private parseData(res: Response)  {
