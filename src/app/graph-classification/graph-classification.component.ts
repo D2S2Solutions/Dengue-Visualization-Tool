@@ -11,7 +11,7 @@ export class GraphClassificationComponent implements OnInit {
   dataArray: any = [[1, 3], [2, 14.01], [3.5, 3.14]];
   type = 'line';
 
-  annGraphData: any[] = [1, 2, 3,    , 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  annGraphData: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   xgBootstGraphData: any[]=[2,
     2,
@@ -143,7 +143,7 @@ export class GraphClassificationComponent implements OnInit {
   constructor(private graphService: GraphDataService) {
     // this.testfn();
     this.getPosts();
-
+    //
     // this.setGraphData();
     // setTimeout(() => this.setGraphData(), 4000 );
 
@@ -161,10 +161,11 @@ export class GraphClassificationComponent implements OnInit {
         data: this.actualGraphData,
         pointBackgroundColor: '#1b69e5',
         borderColor: '#8db0e8',
-        pointRadius: 5,
-        height: '800',
+        pointRadius: 4,
+        height: '900',
         backgroundColor: 'transparent',
-        lineTension: 0
+        lineTension: 0,
+
       });
 
     this.dataset.push({
@@ -172,8 +173,8 @@ export class GraphClassificationComponent implements OnInit {
       data: this.xgBootstGraphData,
       pointBackgroundColor: '#3bd66f',
       borderColor: '#57cc7e',
-      pointRadius: 5,
-      height: '800',
+      pointRadius: 6,
+      height: '900',
       backgroundColor: 'transparent',
       lineTension: 0
     });
@@ -182,8 +183,8 @@ export class GraphClassificationComponent implements OnInit {
       data: this.MLPANNGraphData,
       pointBackgroundColor: '#e09808',
       borderColor: '#edb649',
-      pointRadius: 5,
-      height: '800',
+      pointRadius: 8,
+      height: '900',
       backgroundColor: 'transparent',
       lineTension: 0
     });
@@ -193,8 +194,8 @@ export class GraphClassificationComponent implements OnInit {
       data: this.RFGraphData,
       pointBackgroundColor: '#5e058e',
       borderColor: '#c992e8',
-      pointRadius: 5,
-      height: '800',
+      pointRadius: 10,
+      height: '900',
       backgroundColor: 'transparent',
       lineTension: 0
     });
@@ -225,7 +226,7 @@ export class GraphClassificationComponent implements OnInit {
               pointRadius: 5,
               height: '800',
               backgroundColor: 'transparent',
-              lineTension: 0
+              lineTension: 0,
             });
 
           let x = 0;
