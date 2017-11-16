@@ -136,7 +136,8 @@ export class GraphClassificationComponent implements OnInit {
     backgroundColor: 'red',
     responsive: true,
     maintainAspectRatio: false,
-    bezierCurve: false
+    bezierCurve: false,
+    steppedLine:true,
   };
   private errorMessage: any;
 
@@ -165,6 +166,7 @@ export class GraphClassificationComponent implements OnInit {
         height: '900',
         backgroundColor: 'transparent',
         lineTension: 0,
+        steppedLine: true,
 
       });
 
@@ -227,6 +229,8 @@ export class GraphClassificationComponent implements OnInit {
               height: '800',
               backgroundColor: 'transparent',
               lineTension: 0,
+              steppedLine : true,
+              showLine:false,
             });
 
           let x = 0;
@@ -275,7 +279,9 @@ export class GraphClassificationComponent implements OnInit {
               pointRadius: 5,
               height: '800',
               backgroundColor: 'transparent',
-              lineTension: 0
+              lineTension: 0,
+              steppedLine : true,
+              showLine:true,
             });
             this.setGraphData();
           },

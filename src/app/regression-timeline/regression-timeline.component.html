@@ -1,12 +1,17 @@
 <div>
 
   <div class="x_title">
-    <h2>Dengue Predictions for 2014
+    <h2>Dengue Cases Predictions Timeline
     </h2>
     <small></small>
     <div class="filter">
       <div class="col-md-3 col-sm-3 col-xs-12"></div>
-      <div class="col-md-9 col-sm-9 col-xs-12">
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <select class="form-control">
+          <option>2017</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
         <select class="form-control">
           <option>MC Colombo</option>
           <option>Maharagama</option>
@@ -21,40 +26,17 @@
     <div class="clearfix"></div>
   </div>
 
-  <div class="col-md-9 col-sm-9 col-xs-12" style="margin-bottom: 10px">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" class="flat" (click)="setXGBData($event)"> XG-Boost
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" class="flat" (click)="setMLPANNData($event)"> MLP
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" class="flat" (click)="setRFData($event)"> RF
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" class="flat" checked="checked"> Ensemble-1
-      </label>
-    </div>
-  </div>
 
   <br>
-  <chart id="myChart" [type]="type" [data]="data" [options]="options" style="height: 300px;" ></chart>
+  <chart id="myChart" [data]="data" [type]="type" [options]="options"   style="height: 400px;"></chart>
 </div>
-
 
 <div class="clearfix"></div>
 
 <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 40px;">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Comparison of Classification Models</h2>
+      <h2>Comparison of Regression Models</h2>
       <ul class="nav navbar-right panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
         </li>

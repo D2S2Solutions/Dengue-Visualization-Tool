@@ -15,6 +15,8 @@ import { MobHeatmapComponent } from './mob-heatmap/mob-heatmap.component';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { RegressionTimelineComponent } from './regression-timeline/regression-timeline.component';
 import { ClassificationTimelineComponent } from './classification-timeline/classification-timeline.component';
+import { PredictionMapComponent } from './prediction-map/prediction-map.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 const appRoutes: Routes = [
   { path: 'regression', component: GraphComponent },
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponentComponent },
   { path: 'regtimeline', component: RegressionTimelineComponent },
   { path: 'clastimeline', component: ClassificationTimelineComponent },
+  { path: 'predictionMap', component: PredictionMapComponent },
+
 ];
 
 @NgModule({
@@ -38,6 +42,7 @@ const appRoutes: Routes = [
     ClassificationTimelineComponent,
     RegressionTimelineComponent,
     ClassificationTimelineComponent,
+    PredictionMapComponent,
     // TimelineComponentComponent,
   ],
   imports: [
@@ -48,7 +53,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBvHohFe2Dm4cVd1ZP81MUmCG7S-GTGt34'
+    })
   ],
   providers: [GraphDataService],
   bootstrap: [AppComponent]

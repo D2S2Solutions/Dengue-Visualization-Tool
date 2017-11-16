@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.2",
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
@@ -23,6 +24,7 @@
     "@types/node": "^6.0.87",
     "angular2-chartjs": "^0.3.0",
     "angular2-csv": "^0.2.5",
+    "angular2-google-maps": "^0.17.0",
     "bootstrap": "^3.3.7",
     "bootstrap-daterangepicker": "^2.1.25",
     "chart.js": "^2.6.0",
