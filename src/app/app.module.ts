@@ -16,6 +16,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { RegressionTimelineComponent } from './regression-timeline/regression-timeline.component';
 import { ClassificationTimelineComponent } from './classification-timeline/classification-timeline.component';
 import { PredictionMapComponent } from './prediction-map/prediction-map.component';
+import { DataEntryComponent } from './data-entry/data-entry.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
 const appRoutes: Routes = [
@@ -26,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'regtimeline', component: RegressionTimelineComponent },
   { path: 'clastimeline', component: ClassificationTimelineComponent },
   { path: 'predictionMap', component: PredictionMapComponent },
-
+  { path: 'dataentry', component: DataEntryComponent },
 ];
 
 @NgModule({
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     RegressionTimelineComponent,
     ClassificationTimelineComponent,
     PredictionMapComponent,
+    DataEntryComponent,
     // TimelineComponentComponent,
   ],
   imports: [
