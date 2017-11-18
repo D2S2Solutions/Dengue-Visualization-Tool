@@ -17,6 +17,7 @@ import { RegressionTimelineComponent } from './regression-timeline/regression-ti
 import { ClassificationTimelineComponent } from './classification-timeline/classification-timeline.component';
 import { PredictionMapComponent } from './prediction-map/prediction-map.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'regression', component: GraphComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'regtimeline', component: RegressionTimelineComponent },
   { path: 'clastimeline', component: ClassificationTimelineComponent },
   { path: 'predictionMap', component: PredictionMapComponent },
+  { path: 'login', component: LoginComponent },
 
 ];
 
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     RegressionTimelineComponent,
     ClassificationTimelineComponent,
     PredictionMapComponent,
+    LoginComponent,
     // TimelineComponentComponent,
   ],
   imports: [

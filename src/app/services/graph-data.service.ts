@@ -11,76 +11,76 @@ import {stringDistance} from 'codelyzer/util/utils';
 @Injectable()
 export class GraphDataService {
 
-
+  private baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
   // Injecting the http client into the service
   constructor(private http: Http) {}
 
   // Method retrieve all the posts
   getResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=0';
+    const url = this.baseUrl+'prediction?id=69&type=0';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getXGBResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=1';
+    const url = this.baseUrl+'prediction?id=69&type=1';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getCatBoostResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=2';
+    const url = this.baseUrl+'prediction?id=69&type=2';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getMLPANNResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=4';
+    const url = this.baseUrl+'prediction?id=69&type=4';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getKerasDLResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=5';
+    const url = this.baseUrl+'prediction?id=69&type=5';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getLassoResults (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=3';
+    const url = this.baseUrl+'prediction?id=69&type=3';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getXGBClassifications (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=7';
+    const url = this.baseUrl+'prediction?id=69&type=7';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getMLPClassifications (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=6';
+    const url = this.baseUrl+'prediction?id=69&type=6';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getRFClassifications (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=8';
+    const url = this.baseUrl+'prediction?id=69&type=8';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
   getActualClassifications (): Observable<any> {
-    const url = 'http://dengue.projects.mrt.ac.lk:8091/prediction?id=69&type=9';
+    const url = this.baseUrl+'prediction?id=69&type=9';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
