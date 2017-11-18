@@ -1,10 +1,49 @@
+<div class="col-md-12">
+  <div class="x_title">
+    <h2>Dengue Predictions for Upcoming 3 weeks
+    </h2>
+    <small></small>
+    <div class="filter">
+      <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <select class="form-control">
+          <option>All</option>
+          <option>Colombo</option>
+          <!--<option>Maharagama</option>-->
+          <!--<option>Dehiwala</option>-->
+          <!--<option>Option three</option>-->
+          <!--<option>Option four</option>-->
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <select class="form-control">
+
+          <option>2017</option>
+          <!--<option>Maharagama</option>-->
+          <!--<option>Dehiwala</option>-->
+          <!--<option>Option three</option>-->
+          <!--<option>Option four</option>-->
+        </select>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="col-md-12">
 <sebm-google-map
   [latitude]="lat"
   [longitude]="lng"
-[zoom]="zoom">
+[zoom]="zoom"
+>
   <sebm-google-map-marker
     *ngFor="let m of markers"
     [latitude]="m.lat"
     [longitude]="m.lng">
+    <sebm-google-map-info-window [isOpen]="true" #infoWindow>
+      <strong>{{m.lng}}</strong>
+    </sebm-google-map-info-window>
   </sebm-google-map-marker>
 </sebm-google-map>
+</div>

@@ -166,7 +166,7 @@ export class GraphClassificationComponent implements OnInit {
         height: '900',
         backgroundColor: 'transparent',
         lineTension: 0,
-        steppedLine: true,
+        steppedLine: false,
 
       });
 
@@ -229,7 +229,7 @@ export class GraphClassificationComponent implements OnInit {
               height: '800',
               backgroundColor: 'transparent',
               lineTension: 0,
-              steppedLine : true,
+              steppedLine : false,
               showLine:false,
             });
 
@@ -274,14 +274,14 @@ export class GraphClassificationComponent implements OnInit {
             this.dataset.push({
               label: 'XGBoost',
               data: this.xgBootstGraphData,
-              pointBackgroundColor: '#3bd66f',
+              pointBackgroundColor: 'red',
               borderColor: '#57cc7e',
-              pointRadius: 5,
+              pointRadius: 9,
               height: '800',
               backgroundColor: 'transparent',
               lineTension: 0,
-              steppedLine : true,
-              showLine:true,
+              steppedLine : false,
+              showLine:false,
             });
             this.setGraphData();
           },

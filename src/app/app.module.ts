@@ -19,6 +19,8 @@ import { ClassificationTimelineComponent } from './classification-timeline/class
 import { PredictionMapComponent } from './prediction-map/prediction-map.component';
 import { DataEntryComponent } from './data-entry/data-entry.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { LoginComponent } from './login/login.component';
+import {DataService} from './services/data.service';
 
 const appRoutes: Routes = [
   { path: 'regression', component: GraphComponent },
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'clastimeline', component: ClassificationTimelineComponent },
   { path: 'predictionMap', component: PredictionMapComponent },
   { path: 'dataentry', component: DataEntryComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -46,6 +49,7 @@ const appRoutes: Routes = [
     ClassificationTimelineComponent,
     PredictionMapComponent,
     DataEntryComponent,
+    LoginComponent,
     // TimelineComponentComponent,
   ],
   imports: [
@@ -61,7 +65,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyBvHohFe2Dm4cVd1ZP81MUmCG7S-GTGt34'
     })
   ],
-  providers: [GraphDataService,DataEntryService],
+  providers: [DataService,GraphDataService,PredictionMapComponent,DataEntryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

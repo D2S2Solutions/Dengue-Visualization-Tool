@@ -1,33 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GraphDataService} from '../services/graph-data.service';
+import {ChartComponent} from 'angular2-chartjs';
 
 @Component({
   selector: 'app-home-component',
   templateUrl: './home-component.component.html',
   styleUrls: ['./home-component.component.css']
 })
+
 export class HomeComponentComponent implements OnInit {
+
+  @ViewChild(ChartComponent) chart:ChartComponent;
+
 
   dataArray: any = [[1, 3], [2, 14.01], [3.5, 3.14]];
   type = 'bar';
 
   data = {
-    labels: ["MC-Colombo","Dehiwala","Kandy","Rathnapura","Galle"],
+    labels: ["MC-Colombo","Dehiwala","Kandy","Rathnapura","Galle",
+      "MC-Colombo","Dehiwala","Kandy","Rathnapura","Galle",
+      "MC-Colombo","Dehiwala","Kandy","Rathnapura","Galle",
+      "MC-Colombo","Dehiwala","Kandy","Rathnapura","Galle"],
     datasets: [
       {
         label: "Next Week",
         backgroundColor: '#8db0e8',
-        data: [150,70,4,23,22,10,]
+        data: [150,70,4,23,22,10,150,70,4,23,22,10,150,70,4,23,22,10,150,70,4,23,22,10,],
       },
       {
         label: "+2 Weeks",
         backgroundColor: "#4b6ca0",
-        data: [100,63,5,14,33,]
+        data: [100,63,5,14,33,100,63,5,14,33,100,63,5,14,33,100,63,5,14,33,]
       },
       {
         label: "+3 Weeks",
         backgroundColor: "green",
-        data: [114,53,5,14,33,]
+        data: [114,53,5,14,33,114,53,5,14,33,114,53,5,14,33,114,53,5,14,33,]
       }
     ]
   };
@@ -67,9 +75,12 @@ export class HomeComponentComponent implements OnInit {
     backgroundColor: 'red',
     responsive: true,
     maintainAspectRatio: false,
-    bezierCurve: false
+    bezierCurve: false,
+    showAllTooltips: false
+
   };
-  private errorMessage: any;
+
+
 
   constructor(private graphService: GraphDataService) {
     // this.testfn();
@@ -77,10 +88,16 @@ export class HomeComponentComponent implements OnInit {
     //
     // this.setGraphData();
     // setTimeout(() => this.setGraphData(), 4000 );
-
+    // console.log(this.Chart);
+    this.chartInit();
+    let element = document.getElementById('myChart2');
+    console.log("ssssssssss"+element);
   }
 
 
+  public chartInit(){
+
+  }
 
   ngOnInit() {
   }
