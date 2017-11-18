@@ -1,36 +1,81 @@
 <div id="wizard">
-  <form class="form-horizontal ">
-    
+  <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" class="form-horizontal ">
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+              <label class="control-label col-md-3 col-sm-3 col-xs-3" for="reportrange">Date Range<span class="required">*</span>
+              </label>
+              <div class="col-md-5">
+                  <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                  </div>
+              </div>
+              <div class="control-label col-md-3 col-sm-3 col-xs-12">
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-3" for="week">Week Number<span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-4">
+              <input type="number" id="week" required="required" [(ngModel)]="model.week" name="week" class="form-control col-md-7 col-xs-3">
+            </div>
+              <div class="control-label col-md-3 col-sm-3 col-xs-12">
+              </div>
+
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cases">Cases<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="number" id="cases"  required="required" [(ngModel)]="model.cases" name="cases"  class="form-control col-md-7 col-xs-12">
             </div>
           </div>
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-            </div>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="min-temp">Minimum Temperature<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" id="min-temp" name="minTemp" required="required" [(ngModel)]="model.minTemp" class="form-control col-md-7 col-xs-12">
+              </div>
           </div>
           <div class="form-group">
-            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-            </div>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="max-temp">Maximum Temperature<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" id="max-temp" name="maxTemp"  required="required" [(ngModel)]="model.maxTemp" class="form-control col-md-7 col-xs-12">
+              </div>
           </div>
-          
+      <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mean-temp">Mean Temperature<span class="required">*</span>
+          </label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="mean-temp" name="meanTemp" required="required" [(ngModel)]="model.meanTemp" class="form-control col-md-7 col-xs-12">
           </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-            </div>
+      </div>
+      <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="precipitation">Precipitation<span class="required">*</span>
+          </label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="precipitation" name="precipitation" required="required" [(ngModel)]="model.precipitation" class="form-control col-md-7 col-xs-12">
           </div>
-    
+      </div>
+      <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ndvi">Vegitation Index<span class="required">*</span>
+          </label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="ndvi" name="ndvi" required="required" [(ngModel)]="model.ndvi" class="form-control col-md-7 col-xs-12">
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="control-label col-md-3 col-sm-3 col-xs-12">
+          </div>
+          <div class="control-label col-md-3 col-sm-3 col-xs-12">
+          </div>
+          <div class="control-label col-md-2 col-sm-3 col-xs-12">
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+              <button type="submit"  class="btn btn-success">Submit</button>
+          </div>
+      </div>
+
         </form>
 
 </div>

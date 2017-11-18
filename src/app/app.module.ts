@@ -9,6 +9,7 @@ import {ChartModule} from 'angular2-chartjs';
 import { GraphComponent } from './graph/graph.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {GraphDataService} from './services/graph-data.service';
+import {DataEntryService} from './services/data-entry.service';
 import { GraphClassificationComponent } from './graph-classification/graph-classification.component';
 import {RouterModule, Routes} from '@angular/router';
 import { MobHeatmapComponent } from './mob-heatmap/mob-heatmap.component';
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyBvHohFe2Dm4cVd1ZP81MUmCG7S-GTGt34'
     })
   ],
-  providers: [GraphDataService],
+  providers: [GraphDataService,DataEntryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
