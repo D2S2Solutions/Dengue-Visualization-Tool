@@ -1,19 +1,19 @@
 import {Injectable} from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
-// import {Observable} from 'rxjs/Observable';
-import {Prediction} from './prediction';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
-import {stringDistance} from 'codelyzer/util/utils';
+import {DataService} from './data.service';
 
 
 @Injectable()
-export class GraphDataService {
+export class GraphDataService extends DataService {
 
-  private baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
+
   // Injecting the http client into the service
-  constructor(private http: Http) {}
+  constructor(private http: Http) {
+    super();
+  }
 
   // Method retrieve all the posts
   getResults (): Observable<any> {
@@ -87,23 +87,7 @@ export class GraphDataService {
   }
 
 
-  // This method parses the data to JSON
-  private parseData(res: Response)  {
-    return res.json() || [];
-  }
 
-  // Displays the error message
-  private handleError(error: Response | any) {
-    let errorMessage: string;
-
-    errorMessage = error.message ? error.message : error.toString();
-
-    // In real world application, call to log error to remote server
-    // logError(error);
-
-    // This returns another Observable for the observer to subscribe to
-    return Observable.throw(errorMessage);
-  }
 
   public getANNResults(): number[] {
     let results: number[];
