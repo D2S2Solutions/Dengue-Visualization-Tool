@@ -9,6 +9,7 @@ import {ChartComponent, ChartModule} from 'angular2-chartjs';
 import { GraphComponent } from './graph/graph.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {GraphDataService} from './services/graph-data.service';
+import {DataEntryService} from './services/data-entry.service';
 import { GraphClassificationComponent } from './graph-classification/graph-classification.component';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import { MobHeatmapComponent } from './mob-heatmap/mob-heatmap.component';
@@ -16,6 +17,7 @@ import { HomeComponentComponent } from './home-component/home-component.componen
 import { RegressionTimelineComponent } from './regression-timeline/regression-timeline.component';
 import { ClassificationTimelineComponent } from './classification-timeline/classification-timeline.component';
 import { PredictionMapComponent } from './prediction-map/prediction-map.component';
+import { DataEntryComponent } from './data-entry/data-entry.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { LoginComponent } from './login/login.component';
 import {DataService} from './services/data.service';
@@ -31,8 +33,8 @@ const appRoutes: Routes = [
   { path: 'regtimeline', component: RegressionTimelineComponent },
   { path: 'clastimeline', component: ClassificationTimelineComponent },
   { path: 'predictionMap', component: PredictionMapComponent },
+  { path: 'dataentry', component: DataEntryComponent },
   { path: 'login', component: LoginComponent },
-
 ];
 
 @NgModule({
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
     RegressionTimelineComponent,
     ClassificationTimelineComponent,
     PredictionMapComponent,
+    DataEntryComponent,
     LoginComponent,
     // TimelineComponentComponent,
   ],
@@ -65,7 +68,9 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyBvHohFe2Dm4cVd1ZP81MUmCG7S-GTGt34'
     })
   ],
-  providers: [DataService,GraphDataService,PredictionMapComponent,LoggedInGuard,UserService],
+
+  providers: [DataService,GraphDataService,PredictionMapComponent,LoggedInGuard,UserService,DataEntryService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
