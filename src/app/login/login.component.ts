@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+  userName:string="user name";
+  password:string="password";
 
-  ngOnInit() {
+  constructor(private userService: UserService, private router: Router) {}
+
+  onSubmit() {
+    // alert("calling submit" + this.userName +this.password);
+    // this.router.navigate(['']);
+    window.location.href = '';
+    this.userService.login(this.userName, this.password);
   }
-
 }
