@@ -18,8 +18,10 @@ export class LoginComponent {
     // alert("calling submit" + this.userName +this.password);
     // this.router.navigate(['']);
 // alert(this.userName+this.password);
-window.location.href = '';
-    this.userService.login(this.userName, this.password);
+// window.location.href = '';
+    this.userService.login(this.userName, this.password).subscribe(values=>{
+      window.location.href = '';
+    });
 //       // window.location.href = '';
 //     });
   }
