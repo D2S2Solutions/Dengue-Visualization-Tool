@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class DataService {
 
-  protected baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
+  // protected baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
+  protected baseUrl='http://127.0.0.1:5000/';
 
   constructor() { }
 
