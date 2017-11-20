@@ -19,9 +19,9 @@ export class DataEntryService extends DataService {
       .catch(this.handleError);
   }
 
-  sendWeekData(form:NgForm): Observable<any> {
+  sendWeekData(form:any): Observable<any> {
       // const url = 'http://dengue.projects.mrt.ac.lk:8091/addRecord';
-      return this.http.post(this.baseUrl+'addRecord', JSON.stringify(form))
+      return this.http.post(this.baseUrl+'addRecord',{form})
           .map(this.parseData)
           .catch(this.handleError);
   }
