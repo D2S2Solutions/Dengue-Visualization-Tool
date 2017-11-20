@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import {DataEntryService} from '../services/data-entry.service';
-import {WeekData} from '../services/WeekData';
 import {NgForm} from '@angular/forms';
+import {MohToDistrictMapping} from '../services/MohToDistrictMapping';
 
 @Component({
   selector: 'app-data-entry',
@@ -11,6 +11,7 @@ import {NgForm} from '@angular/forms';
 export class DataEntryComponent implements OnInit {
 
     // private model:WeekData;
+    private mohId:string;
     private week:number;
     private cases:number;
     private minTemp:number;
@@ -22,20 +23,27 @@ export class DataEntryComponent implements OnInit {
     private sendingForm:any;
     private editedWeek:number;
     private isDataAvailable = false;
-    constructor(private zone:NgZone, private dataEntryService:DataEntryService) {
-        this.getLastWeek();
+
+    mohsOfDistrict:any[]=[];
+    districtList:any[]=[];
+    moh:string;
+    district:string;
+    year=2017;
+    constructor(private mohToDistrictMapper:MohToDistrictMapping, private dataEntryService:DataEntryService) {
+        // this.getLastWeek();
+        this.setDistrictList();
         console.log('ON Initi');
     }
 
       ngOnInit() {
       }
-
   private onSubmit(form: NgForm, event:Event) {
       // event.preventDefault();
       console.log('sending data');
       console.log(form.value);
       this.editedWeek = form.value.week;
-      this.sendingForm = {'week':this.week,
+      this.sendingForm = {'mohID':+this.moh,
+                            'week':this.week,
                             'cases':this.cases,
                             'minTemp':this.minTemp,
                             'maxTemp':this.maxTemp,
@@ -48,12 +56,12 @@ export class DataEntryComponent implements OnInit {
   }
 
   private getLastWeek() {
-      this.dataEntryService.getLastWeek()
+      this.dataEntryService.getLastWeek(this.moh)
           .subscribe(
               (response) => {
                   console.log('RESPONSE');
                   console.log(response.weekNo);
-                  this.week = response.weekNo;
+                  this.week = response.weekNo+1;
                   this.isDataAvailable =true;
               },
               function (error) {
@@ -88,4 +96,20 @@ export class DataEntryComponent implements OnInit {
               }
           );
   }
+  private setMohsOfDistrict() {
+        this.mohsOfDistrict=this.mohToDistrictMapper.getMohsOfDistricts(this.district);
+        if(this.mohsOfDistrict.length>0) {
+            this.moh=this.mohsOfDistrict[0];
+        }
+        this.getLastWeek();
+    }
+
+  private setDistrictList() {
+        this.districtList=this.mohToDistrictMapper.getDistrictList();
+        if(this.districtList.length>0) {
+            this.district = this.districtList[0];
+        }
+        this.setMohsOfDistrict();
+        // this.getRegressionTimeline();
+    }
 }
