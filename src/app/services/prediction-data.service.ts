@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {DataService} from './data.service';
 import {Http} from '@angular/http';
+import {Stat} from './Stat';
 
 @Injectable()
 export class PredictionDataService extends DataService {
@@ -19,19 +20,19 @@ export class PredictionDataService extends DataService {
 
 
   getCurrentPredictions(district: string, year: number): Observable<any> {
-    // const url = this.baseUrl + 'currentPredictions?district=' + district + '&year=' + year;
-    // return this.http.get(url)
-    //   .map(this.parseData)
-    //   .catch(this.handleError);
-    return new Observable(
-      subscriber => {
-        subscriber.next(JSON.stringify(this.testResponse));
-      }
-    );
+    const url = this.baseUrl + 'currentPredictions?district=' + district + '&year=' + year;
+    return this.http.get(url)
+      .map(this.parseData)
+      .catch(this.handleError);
+    // return new Observable(
+    //   subscriber => {
+    //     subscriber.next(JSON.stringify(this.testResponse));
+    //   }
+    // );
   }
 
   getStat(): Observable<any> {
-    const url = this.baseUrl + 'getStat';
+    const url = this.baseUrl + 'getstats';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);

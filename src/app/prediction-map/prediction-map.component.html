@@ -5,22 +5,14 @@
     <small></small>
     <div class="filter">
       <div class="col-md-4 col-sm-4 col-xs-12"></div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <select class="form-control" name="district" [(ngModel)]="district" (change)="getPredictions()">
-          <option selected="selected" value="0">All</option>
-          <option [value]="1">Colombo</option>
-          <option [value]="8">Kurunegala</option>
-          <!--<option>Maharagama</option>-->
-          <!--<option>Dehiwala</option>-->
-          <!--<option>Option three</option>-->
-          <!--<option>Option four</option>-->
-        </select>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <select class="form-control" [(ngModel)]="year" (change)="getPredictions()">
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-
+      <div class="col-md-3 col-sm-3 col-xs-12"></div>
+      <div class="col-md-5 col-sm-5 col-xs-12">
+        <select class="form-control" [(ngModel)]="district" (change)="getPredictions()">
+          <option value="0" selected="selected">All</option>
+          <option *ngFor="let dt of districtList"
+                  [value]="dt">
+            {{mohToDistrictMapping.getDistrictName(dt)}}
+          </option>
         </select>
       </div>
 
@@ -34,6 +26,7 @@
   [latitude]="lat"
   [longitude]="lng"
 [zoom]="zoom"
+
 >
   <sebm-google-map-marker
     *ngFor="let m of markers"

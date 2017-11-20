@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MohToDistrictMapping} from '../services/MohToDistrictMapping';
 import {PredictionDataService} from '../services/prediction-data.service';
 
@@ -9,33 +9,46 @@ import {PredictionDataService} from '../services/prediction-data.service';
 })
 export class ClassificationTimelineComponent implements OnInit {
 
-  actualdataArray: any = [2,1,21,312,123,123,1,12,12,12,12,12,12,12,31,212,31,31,231];
-  predictiondataArray: any = [8,10,45,112,133,70,49,18,18,32,34,19,21,23,31,70,61,41,161,130,78,99];
+  actualdataArray: any = [2, 1, 21, 312, 123, 123, 1, 12, 12, 12, 12, 12, 12, 12, 31, 212, 31, 31, 231];
+  predictiondataArray: any = [8, 10, 45, 112, 133, 70, 49, 18, 18, 32, 34, 19, 21, 23, 31, 70, 61, 41, 161, 130, 78, 99];
   type = 'line';
-  labels:any=[];
-  data:any=[];
-  dataset:any=[];
+  labels: any = [];
+  data: any = [];
+  dataset: any = [];
 
   options = {
     backgroundColor: 'red',
     responsive: true,
     maintainAspectRatio: false,
-    bezierCurve: false
+    bezierCurve: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          callback: function (value) {
+            if (Number.isInteger(value)) {
+              return value;
+            }
+          },
+          stepSize: 1
+        }
+      }]
+    },
   };
 
-  mohsOfDistrict:any[]=[];
-  districtList:any[]=[];
-  moh:string;
-  district:string;
-  year:number=2017;
+  mohsOfDistrict: any[] = [];
+  districtList: any[] = [];
+  moh: string;
+  district: string;
+  year: number = 2017;
 
 
-  constructor(private mohToDistrictMapper:MohToDistrictMapping,private predictionDataService:PredictionDataService) {
+  constructor(private mohToDistrictMapper: MohToDistrictMapping, private predictionDataService: PredictionDataService) {
     let x = 0;
     for (; x < 52; x++) {
       this.labels[x] = x + 1;
     }
-    this.setGraphData();
+    // this.setGraphData();
     this.setDistrictList();
 
   }
@@ -43,17 +56,17 @@ export class ClassificationTimelineComponent implements OnInit {
   ngOnInit() {
   }
 
-  setMohsOfDistrict(){
-    this.mohsOfDistrict=this.mohToDistrictMapper.getMohsOfDistricts(this.district);
-    if(this.mohsOfDistrict.length>0){
-      this.moh=this.mohsOfDistrict[0];
+  setMohsOfDistrict() {
+    this.mohsOfDistrict = this.mohToDistrictMapper.getMohsOfDistricts(this.district);
+    if (this.mohsOfDistrict.length > 0) {
+      this.moh = this.mohsOfDistrict[0];
     }
     this.getRegressionTimeline();
   }
 
-  setDistrictList(){
-    this.districtList=this.mohToDistrictMapper.getDistrictList();
-    if(this.districtList.length>0) {
+  setDistrictList() {
+    this.districtList = this.mohToDistrictMapper.getDistrictList();
+    if (this.districtList.length > 0) {
       this.district = this.districtList[0];
     }
     this.setMohsOfDistrict();
@@ -61,12 +74,17 @@ export class ClassificationTimelineComponent implements OnInit {
   }
 
 
-  getRegressionTimeline(){
-    this.predictionDataService.getClassificationTimeline(this.district,this.moh,this.year).subscribe(
-      data=>{
-        this.predictiondataArray=data.predictions;
-        this.actualdataArray=data.actual;
-      },error=>{
+  getRegressionTimeline() {
+    this.actualdataArray = [];
+    this.predictiondataArray = [];
+    // this.dataset.removeAll();
+    this.predictionDataService.getClassificationTimeline(this.district, this.moh, this.year).subscribe(
+      data => {
+        this.predictiondataArray = data.predictions;
+        this.actualdataArray = data.actual;
+        this.labels = data.week;
+        this.setGraphData();
+      }, error => {
         console.log(error);
       }
     );
@@ -74,6 +92,7 @@ export class ClassificationTimelineComponent implements OnInit {
 
 
   public setGraphData() {
+    this.dataset = [];
 
     this.dataset.push(
       {
@@ -85,21 +104,24 @@ export class ClassificationTimelineComponent implements OnInit {
         height: '800',
         backgroundColor: 'transparent',
         lineTension: 0,
-        showLine:false
+        steppedLine:true,
+        // showLine:false
       });
 
     this.dataset.push(
       {
         label: 'Predicted',
         data: this.predictiondataArray,
-        pointBackgroundColor: 'green',
+        pointBackgroundColor: '#d8732b',
         borderColor: '#d8732b',
         pointRadius: 5,
         height: '800',
         backgroundColor: 'transparent',
         lineTension: 0,
-        showLine:false
+        // showLine:false,
+        steppedLine:true
       });
+
     this.data = {
       labels: this.labels,
       datasets: this.dataset,
@@ -112,8 +134,7 @@ export class ClassificationTimelineComponent implements OnInit {
 
   }
 
-  getAbsoluteValue(x,y){
-    return Math.abs(x-y);
+  getAbsoluteValue(x, y) {
+    return Math.abs(x - y);
   }
-
 }

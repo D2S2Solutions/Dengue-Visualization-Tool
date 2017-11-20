@@ -42,6 +42,7 @@ export class GraphComponent implements OnInit {
 
   private moh='69';
 
+
   constructor(private graphService: GraphDataService) {
 
     this.getPosts();
@@ -57,6 +58,7 @@ export class GraphComponent implements OnInit {
   getPosts() {
     // alert('calling backend');
     // this.graphService.getPosts().map(data => this.annGraphData = data);
+    this.dataset=[];
     this.graphService.getResults(this.moh)
       .subscribe(
         (response) => {

@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import {GraphDataService} from '../services/graph-data.service';
 import {ChartComponent} from 'angular2-chartjs';
 import {PredictionDataService} from '../services/prediction-data.service';
+import {MohToDistrictMapping} from '../services/MohToDistrictMapping';
+import {Stat} from '../services/Stat';
 
 @Component({
   selector: 'app-home-component',
@@ -28,6 +30,9 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
   regressionGraphData: any = [];
   classificationGraphData: any = [];
 
+  startDate:any;
+  endDate:any;
+
 
   regressionGraphOptions = {
     backgroundColor: 'red',
@@ -36,6 +41,9 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
     bezierCurve: false,
     showAllTooltips: false
   };
+
+
+  statModels:Array<Stat>=[];
 
   classificationGraphOptions = {
     backgroundColor: 'red',
@@ -68,17 +76,29 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
 
   graphData = [];
   private chartContext: CanvasRenderingContext2D | any;
+  private districtList= [];
 
-  constructor(private predictionDataService: PredictionDataService, private elementRef: ElementRef) {
+  constructor(private predictionDataService: PredictionDataService, private elementRef: ElementRef,
+  private mohToDistrictMapper:MohToDistrictMapping) {
 
-    // this.getStatistics();
+    this.getStatistics();
+    this.setDistrictList();
     this.getPredictions();
     // this.testFn();
   }
 
 
-  public getStatistics() {
+  setDistrictList() {
+    this.districtList = this.mohToDistrictMapper.getDistrictList();
 
+    // this.setMohsOfDistrict();
+    // this.getRegressionTimeline();
+  }
+
+  public getStatistics() {
+    this.predictionDataService.getStat().subscribe(value=>{
+      this.statModels=value.data;
+    });
   }
 
   ngOnInit() {
@@ -89,98 +109,108 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
   }
 
 
-    getPredictions() {
-    this.regressionDataset=[];
-    this.classificationDataset=[];
-    this.regressionData=[];
-    this.classificationData=[];
-    this.regressionLabels=[];
-    this.classificationLabels=[];
-      this.predictionDataService.getCurrentPredictions(this.district, this.year)
-        .subscribe(
-          (response) => {
-            const graphData = JSON.parse(response).data;
-            for (let x=0; x < graphData.length; x++) {
-              this.regressionData.push(graphData[x].predictedCases);
-              this.classificationData.push(graphData[x].predictedLevel);
-              this.regressionLabels.push(graphData[x].mohName);
-              this.classificationLabels.push(graphData[x].mohName);
-            }
+  setWeek(week){
+    this.startDate=week;
+    this.endDate = parseInt(this.startDate)+1000*60*60*24*7;
+    // let date = new Date(week);
+    // date.setDate( date.getDate() + 3 );
+    // this.endDate=date.getDate();
+  }
 
 
-            this.regressionDataset.push(
-              {
-                label: '+3 weeks',
-                backgroundColor: '#8db0e8',
-                data: this.regressionData,
-              }
-            );
-
-            this.classificationDataset.push(
-              {
-                label: '+3 weeks',
-                backgroundColor: '#8db0e8',
-                data: this.classificationData,
-              }
-            );
-
-
-            this.setGraphData();
-          },
-          function (error) {
-            alert('Error happened' + error);
+  getPredictions() {
+    this.regressionDataset = [];
+    this.classificationDataset = [];
+    this.regressionData = [];
+    this.classificationData = [];
+    this.regressionLabels = [];
+    this.classificationLabels = [];
+    this.predictionDataService.getCurrentPredictions(this.district, this.year)
+      .subscribe(
+        (response) => {
+          const graphData = response.data;
+          this.setWeek(response.week);
+          for (let x = 0; x < graphData.length; x++) {
+            this.regressionData.push(graphData[x].predictedCases);
+            this.classificationData.push(graphData[x].predictedLevel);
+            this.regressionLabels.push(graphData[x].mohName);
+            this.classificationLabels.push(graphData[x].mohName);
           }
-          // posts => this.annGraphData = posts,
-        );
-      // alert(this.annGraphData);
-    }
+
+
+          this.regressionDataset.push(
+            {
+              label: '+3 weeks',
+              backgroundColor: '#7095d1',
+              data: this.regressionData,
+            }
+          );
+
+          this.classificationDataset.push(
+            {
+              label: '+3 weeks',
+              backgroundColor: '#409e90',
+              data: this.classificationData,
+            }
+          );
+
+
+          this.setGraphData();
+        },
+        function (error) {
+          alert('Error happened' + error);
+        }
+        // posts => this.annGraphData = posts,
+      );
+    // alert(this.annGraphData);
+  }
 
 
   public setGraphData() {
-      this.regressionGraphData = {
-        labels: this.regressionLabels,
-        datasets: this.regressionDataset,
-        borderColor: [
-          'rgba(255,99,132,1,)'
-        ],
-        borderWidth: 1,
-      };
+    this.regressionGraphData = {
+      labels: this.regressionLabels,
+      datasets: this.regressionDataset,
+      borderColor: [
+        'rgba(255,99,132,1,)'
+      ],
+      borderWidth: 1,
+    };
 
-      this.classificationGraphData = {
-        labels: this.classificationLabels,
-        datasets: this.classificationDataset,
-        borderColor: [
-          'rgba(255,99,132,1,)'
-        ],
-        borderWidth: 1,
-      };
+    this.classificationGraphData = {
+      labels: this.classificationLabels,
+      datasets: this.classificationDataset,
+      borderColor: [
+        'rgba(255,99,132,1,)'
+      ],
+      borderWidth: 1,
+    };
 
-    }
+  }
 
 
   public testFn() {
-      this.regressionGraphData = {
-        labels: ['MC-Colombo', 'Dehiwala', 'Kandy', 'Rathnapura'],
-        datasets: [
-          {
-            label: '+3 Weeks',
-            backgroundColor: 'green',
-            data: [114, 53, 5, 14]
-          }
-        ]
-      };
+    this.regressionGraphData = {
+      labels: ['MC-Colombo', 'Dehiwala', 'Kandy', 'Rathnapura'],
+      datasets: [
+        {
+          label: '+3 Weeks',
+          backgroundColor: 'green',
+          data: [114, 53, 5, 14]
+        }
+      ]
+    };
 
-      this.classificationGraphData = {
-        labels: ['MC-Colombo', 'Dehiwala', 'Kandy', 'Rathnapura', 'Galle'],
-        datasets: [
-          {
-            label: '+3 Weeks',
-            backgroundColor: '#8db0e8',
-            data: [4, 3, 1, 1, 2,]
-          }
-        ]
-      };
-    }
-
+    this.classificationGraphData = {
+      labels: ['MC-Colombo', 'Dehiwala', 'Kandy', 'Rathnapura', 'Galle'],
+      datasets: [
+        {
+          label: '+3 Weeks',
+          backgroundColor: '#8db0e8',
+          data: [4, 3, 1, 1, 2,]
+        }
+      ]
+    };
   }
+
+}
 

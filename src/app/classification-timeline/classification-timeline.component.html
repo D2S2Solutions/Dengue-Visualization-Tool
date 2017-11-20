@@ -68,14 +68,14 @@
         <thead>
         <tr>
           <th>Week</th>
-          <th>Actual Cases</th>
-          <th>Predictions</th>
+          <th>Actual Level</th>
+          <th>Predicted Level</th>
           <th>Difference</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let item of actualdataArray; let i = index">
-          <th scope="row">{{i}}</th>
+          <th scope="row">{{this.labels[i]}}</th>
           <td>{{this.actualdataArray[i]}}</td>
           <td>{{this.predictiondataArray[i]}}</td>
           <td>{{getAbsoluteValue(this.actualdataArray[i],this.predictiondataArray[i])}}</td>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
+import {Http,Headers} from '@angular/http';
 import {DataService} from './data.service';
 
 
@@ -15,13 +15,16 @@ export class UserService extends DataService{
   login(userName, password) {
     localStorage.setItem('auth_token', 'sdfsdf');
     this.loggedIn = true;
+    // const headers = new Headers();
+    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     // return this.http
     //   .post(
     //     this.baseUrl+'login',
-    //     { userName, password }
+    //     { userName,password },
+    //     {headers}
     //   )
     //   .map((res: any) => {
-    //     alert(res.username);
+    //     alert(res);
     //     if (res.success) {
     //
     //       localStorage.setItem('auth_token', res.userName);

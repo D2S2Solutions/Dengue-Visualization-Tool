@@ -226,7 +226,7 @@ export class GraphClassificationComponent implements OnInit {
               data: this.actualGraphData,
               pointBackgroundColor: '#1b69e5',
               borderColor: '#8db0e8',
-              pointRadius: 5,
+              pointRadius: 3,
               height: '800',
               backgroundColor: 'transparent',
               lineTension: 0,
@@ -277,7 +277,7 @@ export class GraphClassificationComponent implements OnInit {
               data: this.xgBootstGraphData,
               pointBackgroundColor: 'red',
               borderColor: '#57cc7e',
-              pointRadius: 9,
+              pointRadius: 5,
               height: '800',
               backgroundColor: 'transparent',
               lineTension: 0,
@@ -313,10 +313,11 @@ export class GraphClassificationComponent implements OnInit {
               data: this.MLPANNGraphData,
               pointBackgroundColor: '#e09808',
               borderColor: '#edb649',
-              pointRadius: 5,
+              pointRadius: 7,
               height: '800',
               backgroundColor: 'transparent',
-              lineTension: 0
+              lineTension: 0,
+              showLine:false,
             });
             this.setGraphData();
           },
@@ -348,10 +349,11 @@ export class GraphClassificationComponent implements OnInit {
               data: this.RFGraphData,
               pointBackgroundColor: '#5e058e',
               borderColor: '#c992e8',
-              pointRadius: 5,
+              pointRadius: 9,
               height: '800',
               backgroundColor: 'transparent',
-              lineTension: 0
+              lineTension: 0,
+              showLine:false
             });
             this.setGraphData();
           },

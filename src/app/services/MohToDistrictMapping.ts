@@ -23,11 +23,11 @@ export class MohToDistrictMapping {
     this.districtMap.set('1', 'Colombo');
     this.districtList.push('1');
 
-    this.districtMap.set('8', 'Kurunegala');
-    this.districtList.push('8');
+    this.districtMap.set('18', 'Kurunegala');
+    this.districtList.push('18');
 
     this.mohToDistrictMap.set('1', ['69', '173']);
-    this.mohToDistrictMap.set('8', ['207']);
+    this.mohToDistrictMap.set('18', ['207']);
 
   }
 

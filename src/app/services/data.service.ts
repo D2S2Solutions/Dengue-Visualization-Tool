@@ -6,8 +6,8 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class DataService {
 
-  // protected baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
-  protected baseUrl='http://127.0.0.1:5000/';
+  protected baseUrl='http://dengue.projects.mrt.ac.lk:8091/';
+  // protected baseUrl='http://127.0.0.1:5000/';
 
   constructor() { }
 
