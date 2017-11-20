@@ -140,6 +140,7 @@ export class GraphClassificationComponent implements OnInit {
     steppedLine:true,
   };
   private errorMessage: any;
+  private moh:string="69";
 
   constructor(private graphService: GraphDataService) {
     // this.testfn();

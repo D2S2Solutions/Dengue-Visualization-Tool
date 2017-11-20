@@ -7,10 +7,10 @@
     <div class="filter">
       <div class="col-md-3 col-sm-3 col-xs-12"></div>
       <div class="col-md-9 col-sm-9 col-xs-12">
-        <select class="form-control">
-          <option>MC Colombo</option>
-          <option>Maharagama</option>
-          <option>Dehiwala</option>
+        <select class="form-control" [(ngModel)]="moh" (change)="getPosts()">
+          <option value="69">MC Colombo</option>
+          <option value="173">Dehiwala</option>
+          <option value="99">Kandy</option>
           <!--<option>Option three</option>-->
           <!--<option>Option four</option>-->
         </select>
@@ -49,7 +49,12 @@
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" class="flat" checked="checked"> Ensemble-1
+        <input type="checkbox" class="flat" checked="checked"> Ensemble with Stacking
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" class="flat" checked="checked"> Ensemble-2
       </label>
     </div>
   </div>

@@ -42,14 +42,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="x_title">
-        <h2>Dengue Predictions for Upcoming 3 weeks
+        <h2>Dengue Predictions for
         </h2>
         <small></small>
         <div class="filter">
           <div class="col-md-4 col-sm-4 col-xs-12"></div>
           <div class="col-md-4 col-sm-4 col-xs-12">
-            <select class="form-control">
-              <option>Colombo</option>
+            <select class="form-control" name="district" [(ngModel)]="district" (change)="getPredictions()">
+              <option selected="selected" value="0">All</option>
+              <option [value]="1">Colombo</option>
+              <option [value]="8">Kurunegala</option>
               <!--<option>Maharagama</option>-->
               <!--<option>Dehiwala</option>-->
               <!--<option>Option three</option>-->
@@ -57,12 +59,10 @@
             </select>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
-            <select class="form-control">
-              <option>2017</option>
-              <!--<option>Maharagama</option>-->
-              <!--<option>Dehiwala</option>-->
-              <!--<option>Option three</option>-->
-              <!--<option>Option four</option>-->
+            <select class="form-control" [(ngModel)]="year" (change)="getPredictions()">
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+
             </select>
           </div>
 
@@ -95,7 +95,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <chart id="myChart" [type]="type" [data]="data" [options]="options" style="height: 300px;"></chart>
+        <chart id="myChart" [type]="type" [data]="regressionGraphData" [options]="regressionGraphOptions" style="height: 300px;"></chart>
       </div>
     </div>
   </div>
@@ -125,7 +125,7 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <chart id="myChart2" [type]="type" [data]="data2" [options]="options" style="height: 300px;"></chart>
+      <chart id="myChart2" [type]="type" [data]="classificationGraphData" [options]="classificationGraphOptions" style="height: 300px;"></chart>
     </div>
   </div>
 
@@ -157,9 +157,9 @@
         <tr>
           <th>#</th>
           <th>MOH</th>
-          <th>Next Week</th>
-          <th>R-Squared</th>
-          <th>R-Squared</th>
+          <th>Predicted Dengue Cases</th>
+          <th>Predicted Dengue Level</th>
+          <!--<th>R-Squared</th>-->
         </tr>
         </thead>
         <tbody>

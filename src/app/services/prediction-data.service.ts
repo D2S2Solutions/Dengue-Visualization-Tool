@@ -10,7 +10,7 @@ export class PredictionDataService extends DataService {
     super();
   }
 
-  getCurrentPredictions (district:string,year:string): Observable<any> {
+  getCurrentPredictions (district:string,year:number): Observable<any> {
     const url = this.baseUrl+'currentPredictions?district='+district+'&year='+year;
     return this.http.get(url)
       .map(this.parseData)
@@ -24,14 +24,14 @@ export class PredictionDataService extends DataService {
       .catch(this.handleError);
   }
 
-  getRegressionTimeline (district:string,moh:string,year:string): Observable<any> {
+  getRegressionTimeline (district:string,moh:string,year:number): Observable<any> {
     const url = this.baseUrl+'regressionTimeline?district='+district+'&year='+year+'&moh='+moh;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getClassificationTimeline (district:string,moh:string,year:string): Observable<any> {
+  getClassificationTimeline (district:string,moh:string,year:number): Observable<any> {
     const url = this.baseUrl+'classificationTimeline?district='+district+'&year='+year+'&moh='+moh;
     return this.http.get(url)
       .map(this.parseData)

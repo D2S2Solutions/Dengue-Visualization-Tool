@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import {DataService} from './data.service';
 
 
 @Injectable()
-export class UserService {
+export class UserService extends DataService{
   private loggedIn = false;
 
   constructor(private http: Http) {
+    super();
     this.loggedIn = !!localStorage.getItem('auth_token');
   }
 
-  login(email, password) {
+  login(userName, password) {
     localStorage.setItem('auth_token', 'sdfsdf');
     this.loggedIn = true;
     // return this.http
     //   .post(
-    //     '/login',
-    //     { email, password }
+    //     this.baseUrl+'login',
+    //     { userName, password }
     //   )
     //   .map((res: any) => {
     //     if (res.success) {

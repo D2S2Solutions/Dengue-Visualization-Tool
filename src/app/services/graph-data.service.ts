@@ -17,7 +17,7 @@ export class GraphDataService extends DataService {
 
   // Method retrieve all the posts
   getResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=0';
+    const url = this.baseUrl+'prediction?id=69&type=0&method=52';
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);

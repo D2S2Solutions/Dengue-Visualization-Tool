@@ -40,9 +40,11 @@ export class GraphComponent implements OnInit {
   };
   private errorMessage: any;
 
+  private moh="69";
+
   constructor(private graphService: GraphDataService) {
 
-    this.getPosts();
+    // this.getPosts();
 
     // this.setGraphData();
     // setTimeout(() => this.setGraphData(), 4000 );

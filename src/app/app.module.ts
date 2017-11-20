@@ -24,6 +24,9 @@ import {DataService} from './services/data.service';
 import {LoggedInGuard} from './logged-in.guard';
 import {UserService} from './services/user.service';
 import {PathLocationStrategy} from '@angular/common';
+import {PredictionDataService} from './services/prediction-data.service';
+import { UpcomingweeksPredictionsComponent } from './upcomingweeks-predictions/upcomingweeks-predictions.component';
+import {MohToDistrictMapping} from './services/MohToDistrictMapping';
 
 const appRoutes: Routes = [
   { path: 'regression', component: GraphComponent },
@@ -35,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'predictionMap', component: PredictionMapComponent },
   { path: 'dataentry', component: DataEntryComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'next3weeksPredictions', component: UpcomingweeksPredictionsComponent },
 ];
 
 @NgModule({
@@ -53,6 +57,7 @@ const appRoutes: Routes = [
     PredictionMapComponent,
     DataEntryComponent,
     LoginComponent,
+    UpcomingweeksPredictionsComponent,
     // TimelineComponentComponent,
   ],
   imports: [
@@ -69,7 +74,7 @@ const appRoutes: Routes = [
     })
   ],
 
-  providers: [DataService,GraphDataService,PredictionMapComponent,LoggedInGuard,UserService,DataEntryService],
+  providers: [DataService,GraphDataService,PredictionDataService,LoggedInGuard,UserService,DataEntryService,MohToDistrictMapping],
 
   bootstrap: [AppComponent]
 })
