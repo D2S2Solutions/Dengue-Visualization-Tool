@@ -6,9 +6,10 @@
     <div class="filter">
       <div class="col-md-4 col-sm-4 col-xs-12"></div>
       <div class="col-md-4 col-sm-4 col-xs-12">
-        <select class="form-control">
-          <option>All</option>
-          <option>Colombo</option>
+        <select class="form-control" name="district" [(ngModel)]="district" (change)="getPredictions()">
+          <option selected="selected" value="0">All</option>
+          <option [value]="1">Colombo</option>
+          <option [value]="8">Kurunegala</option>
           <!--<option>Maharagama</option>-->
           <!--<option>Dehiwala</option>-->
           <!--<option>Option three</option>-->
@@ -16,13 +17,10 @@
         </select>
       </div>
       <div class="col-md-4 col-sm-4 col-xs-12">
-        <select class="form-control">
+        <select class="form-control" [(ngModel)]="year" (change)="getPredictions()">
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
 
-          <option>2017</option>
-          <!--<option>Maharagama</option>-->
-          <!--<option>Dehiwala</option>-->
-          <!--<option>Option three</option>-->
-          <!--<option>Option four</option>-->
         </select>
       </div>
 
@@ -42,7 +40,11 @@
     [latitude]="m.lat"
     [longitude]="m.lng">
     <sebm-google-map-info-window [isOpen]="true" #infoWindow>
-      <strong>{{m.lng}}</strong>
+      <strong>{{m.name}}</strong>
+      <br>
+      <strong>Cases: {{m.predictedCases}}</strong>
+      <br>
+      <strong>Level:{{m.predictedLevel}}</strong>
     </sebm-google-map-info-window>
   </sebm-google-map-marker>
 </sebm-google-map>

@@ -21,8 +21,10 @@ export class UserService extends DataService{
     //     { userName, password }
     //   )
     //   .map((res: any) => {
+    //     alert(res.username);
     //     if (res.success) {
-    //       localStorage.setItem('auth_token', res.auth_token);
+    //
+    //       localStorage.setItem('auth_token', res.userName);
     //       this.loggedIn = true;
     //     }
     //

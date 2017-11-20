@@ -14,6 +14,11 @@ export class DataService {
     return res.json() || [];
   }
 
+  protected parseDataFORHOme(res: Response)  {
+    // alert(res.json());
+    return res.json() || [];
+  }
+
   // Displays the error message
   protected handleError(error: Response | any) {
     let errorMessage: string;

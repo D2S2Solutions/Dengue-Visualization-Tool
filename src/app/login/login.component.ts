@@ -17,7 +17,7 @@ export class LoginComponent {
   onSubmit() {
     // alert("calling submit" + this.userName +this.password);
     // this.router.navigate(['']);
-    window.location.href = '';
+      window.location.href = '';
     this.userService.login(this.userName, this.password);
   }
 }

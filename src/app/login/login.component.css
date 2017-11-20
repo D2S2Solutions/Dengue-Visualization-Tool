@@ -3,3 +3,11 @@
   width: 50%;
   padding: 170px 0;
 }
+
+.loginBackground{
+  background: url('/assets/img/Login-Page-Background.jpg');
+  /*background-color: red;*/
+}
+
+
+

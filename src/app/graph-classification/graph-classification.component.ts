@@ -215,7 +215,7 @@ export class GraphClassificationComponent implements OnInit {
   getPosts() {
     // alert('calling backend');
     // this.graphService.getPosts().map(data => this.annGraphData = data);
-    this.graphService.getActualClassifications()
+    this.graphService.getActualClassifications(this.moh)
       .subscribe(
         (response) => {
           // this.annGraphData = response.ann;
@@ -266,7 +266,7 @@ export class GraphClassificationComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getXGBClassifications()
+      this.graphService.getXGBClassifications(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -302,7 +302,7 @@ export class GraphClassificationComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getMLPClassifications()
+      this.graphService.getMLPClassifications(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -337,7 +337,7 @@ export class GraphClassificationComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getRFClassifications()
+      this.graphService.getRFClassifications(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;

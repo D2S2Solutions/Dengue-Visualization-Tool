@@ -40,11 +40,11 @@ export class GraphComponent implements OnInit {
   };
   private errorMessage: any;
 
-  private moh="69";
+  private moh='69';
 
   constructor(private graphService: GraphDataService) {
 
-    // this.getPosts();
+    this.getPosts();
 
     // this.setGraphData();
     // setTimeout(() => this.setGraphData(), 4000 );
@@ -57,7 +57,7 @@ export class GraphComponent implements OnInit {
   getPosts() {
     // alert('calling backend');
     // this.graphService.getPosts().map(data => this.annGraphData = data);
-    this.graphService.getResults()
+    this.graphService.getResults(this.moh)
       .subscribe(
         (response) => {
           // this.annGraphData = response.ann;
@@ -109,7 +109,7 @@ export class GraphComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getXGBResults()
+      this.graphService.getXGBResults(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -144,7 +144,7 @@ export class GraphComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getLassoResults()
+      this.graphService.getLassoResults(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -181,7 +181,7 @@ export class GraphComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getCatBoostResults()
+      this.graphService.getCatBoostResults(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -217,7 +217,7 @@ export class GraphComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getMLPANNResults()
+      this.graphService.getMLPANNResults(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;
@@ -252,7 +252,7 @@ export class GraphComponent implements OnInit {
     const target = <HTMLInputElement> event.target || event.srcElement || event.currentTarget;
     const isChecked = target.checked;
     if (isChecked) {
-      this.graphService.getKerasDLResults()
+      this.graphService.getKerasDLResults(this.moh)
         .subscribe(
           (response) => {
             // this.annGraphData = response.ann;

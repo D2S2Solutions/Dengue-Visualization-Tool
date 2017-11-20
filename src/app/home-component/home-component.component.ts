@@ -71,9 +71,9 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
 
   constructor(private predictionDataService: PredictionDataService, private elementRef: ElementRef) {
 
-    this.getStatistics();
-    // this.getPredictions();
-    this.testFn();
+    // this.getStatistics();
+    this.getPredictions();
+    // this.testFn();
   }
 
 
@@ -90,17 +90,23 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
 
 
     getPredictions() {
+    this.regressionDataset=[];
+    this.classificationDataset=[];
+    this.regressionData=[];
+    this.classificationData=[];
+    this.regressionLabels=[];
+    this.classificationLabels=[];
       this.predictionDataService.getCurrentPredictions(this.district, this.year)
         .subscribe(
           (response) => {
-            // this.annGraphData = response.ann;
-            const graphData = response.predictions;
-
-            for (let x; x < graphData.length; x++) {
-              this.regressionData.push(graphData[x].prediictedCases);
-              this.classificationData.push(graphData[x].predictedLevels);
+            const graphData = JSON.parse(response).data;
+            for (let x=0; x < graphData.length; x++) {
+              this.regressionData.push(graphData[x].predictedCases);
+              this.classificationData.push(graphData[x].predictedLevel);
               this.regressionLabels.push(graphData[x].mohName);
+              this.classificationLabels.push(graphData[x].mohName);
             }
+
 
             this.regressionDataset.push(
               {

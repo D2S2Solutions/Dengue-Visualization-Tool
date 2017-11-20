@@ -35,7 +35,7 @@ export class RegressionTimelineComponent implements OnInit {
     for (; x < 52; x++) {
       this.labels[x] = x + 1;
     }
-    this.setGraphData();
+    // this.setGraphData();
     this.setDistrictList();
 
   }
@@ -62,10 +62,15 @@ export class RegressionTimelineComponent implements OnInit {
 
 
   getRegressionTimeline(){
+    this.actualdataArray=[];
+    this.predictiondataArray=[];
+    // this.dataset.removeAll();
     this.predictionDataService.getRegressionTimeline(this.district,this.moh,this.year).subscribe(
       data=>{
         this.predictiondataArray=data.predictions;
         this.actualdataArray=data.actual;
+        this.labels=data.week;
+        this.setGraphData();
       },error=>{
         console.log(error);
       }
@@ -74,6 +79,7 @@ export class RegressionTimelineComponent implements OnInit {
 
 
   public setGraphData() {
+    this.dataset=[];
 
     this.dataset.push(
       {

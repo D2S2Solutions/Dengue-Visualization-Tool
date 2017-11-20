@@ -6,6 +6,7 @@ export class MohToDistrictMapping {
 
   public mohToDistrictMap: Map<string, Array<string>> = new Map();
   public mohMap: Map<string, string> = new Map();
+  public mohoLocationMap: Map<string,Array<number>> = new Map();
   public districtMap: Map<string, string> = new Map();
   public districtList = [];
 
@@ -13,7 +14,11 @@ export class MohToDistrictMapping {
 
     this.mohMap.set('69', 'MC-COLOMBO');
     this.mohMap.set('173', 'Dehiwala');
-    this.mohMap.set('100', 'Kurunegala');
+    this.mohMap.set('207', 'Kurunegala');
+
+    this.mohoLocationMap.set('69',[6.91999267,79.86733114]);
+    this.mohoLocationMap.set('173',[6.858409663,79.87577179]);
+    this.mohoLocationMap.set('207',[7.477474908,80.3520106]);
 
     this.districtMap.set('1', 'Colombo');
     this.districtList.push('1');
@@ -22,7 +27,7 @@ export class MohToDistrictMapping {
     this.districtList.push('8');
 
     this.mohToDistrictMap.set('1', ['69', '173']);
-    this.mohToDistrictMap.set('8', ['100']);
+    this.mohToDistrictMap.set('8', ['207']);
 
   }
 
@@ -30,16 +35,20 @@ export class MohToDistrictMapping {
     return this.mohToDistrictMap.get(district);
   }
 
-  public getDistrictList(){
+  public getDistrictList() {
     return this.districtList;
   }
 
-  getDistrictName(id){
+  getDistrictName(id) {
     return this.districtMap.get(id);
   }
 
-  getMOHName(id){
+  getMOHName(id) {
     return this.mohMap.get(id);
+  }
+
+  getMohLocationArray(moh) {
+    return this.mohoLocationMap.get(moh);
   }
 
 }

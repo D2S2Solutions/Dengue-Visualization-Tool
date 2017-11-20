@@ -1,5 +1,6 @@
+
 <div class="container body">
-  <div class="main_container">
+  <div class="main_container" >
     <div class="col-md-3 left_col" *ngIf="!isHidden">
       <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
@@ -23,8 +24,8 @@
     <!-- /top navigation -->
 
     <!-- page content -->
-    <div class="right_col" role="main">
-      <div class="">
+    <div class="" [ngClass]="isHidden==true ? '':'right_col'" role="main">
+      <div>
         <!--<div class="row top_tiles">-->
         <!--<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">-->
         <!--<div class="tile-stats">-->
@@ -592,7 +593,7 @@
     <!-- /page content -->
 
     <!-- footer content -->
-    <footer>
+    <footer [ngClass]="isHidden==true ? 'footerClass':''"   >
       <div class="pull-right">
         Developed by University of Moratuwa, Dept. of Computer Science & Engineering - Dengue Prediction Group
         {{outputArray}}
@@ -604,5 +605,5 @@
 
 </div>
 <!--<div class="container body" *ngIf="router.url == '/login'">-->
-  <!--<router-outlet></router-outlet>-->
+<!--<router-outlet></router-outlet>-->
 <!--</div>-->

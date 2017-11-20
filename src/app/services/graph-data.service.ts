@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
@@ -9,6 +9,22 @@ import {DataService} from './data.service';
 @Injectable()
 export class GraphDataService extends DataService {
 
+  private static METHOD_52='52';
+  private static METHOD_12='12';
+  private static METHOD_1='1';
+
+  private static ACTUAL_TYPE='0';
+  private static XGB_REG_TYPE='1';
+  private static CATBOOST_REG_TYPE='2';
+  private static LASSO_REG_TYPE='3';
+  private static KERAS_ANN_REG_TYPE='4';
+  private static MLP_REG_TYPE='5';
+  private static MLP_LEVEL_TYPE='6';
+  private static XGB_LEVEL_TYPE='7';
+  private static RF_LEVEL_TYPE='8';
+  private static ACTUAL_LEVEL_TYPE='9';
+
+  private static PREDICTION_END_POINT='prediction?';
 
   // Injecting the http client into the service
   constructor(private http: Http) {
@@ -16,71 +32,100 @@ export class GraphDataService extends DataService {
   }
 
   // Method retrieve all the posts
-  getResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=0&method=52';
+  getResults (moh:string): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.ACTUAL_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getXGBResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=1';
+  getXGBResults (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.XGB_REG_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getCatBoostResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=2';
+  getCatBoostResults (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.CATBOOST_REG_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getMLPANNResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=4';
+  getMLPANNResults (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+'&type='+GraphDataService.MLP_REG_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getKerasDLResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=5';
+  getKerasDLResults (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.KERAS_ANN_REG_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getLassoResults (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=3';
+  getLassoResults (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.LASSO_REG_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getXGBClassifications (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=7';
+  getXGBClassifications (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.XGB_LEVEL_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getMLPClassifications (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=6';
+  getMLPClassifications (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.MLP_LEVEL_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getRFClassifications (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=8';
+  getRFClassifications (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.RF_LEVEL_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
   }
 
-  getActualClassifications (): Observable<any> {
-    const url = this.baseUrl+'prediction?id=69&type=9';
+  getActualClassifications (moh): Observable<any> {
+    const url = this.baseUrl+GraphDataService.PREDICTION_END_POINT+
+      'id='+moh+
+      '&type='+GraphDataService.ACTUAL_LEVEL_TYPE+
+      '&method='+GraphDataService.METHOD_52;
     return this.http.get(url)
       .map(this.parseData)
       .catch(this.handleError);
