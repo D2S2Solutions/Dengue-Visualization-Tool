@@ -1,4 +1,7 @@
-<div class="col-md-12 col-sm-12 col-xs-12">
+<div *ngIf="!isDataAvailable" class="col-md-12 col-sm-12 col-xs-12">
+</div>
+
+<div *ngIf="isDataAvailable" class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title" style="align-content: center">
       <h2>Insert latest Dengue cases and Weather data</h2>
