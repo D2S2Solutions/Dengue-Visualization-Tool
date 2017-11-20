@@ -7,14 +7,16 @@ import {NgForm} from '@angular/forms';
 
 @Injectable()
 export class DataEntryService extends DataService {
-
+  private headers;
   constructor(private http: Http) {
     super();
+      this.headers = new Headers({
+          'accept': 'application/json'
+      });
   }
-
-  getLastWeek (): Observable<any> {
+  getLastWeek (moh:string): Observable<any> {
     // const url = 'http://dengue.projects.mrt.ac.lk:8091/getlastweek';
-    return this.http.get(this.baseUrl+'getLastWeek')
+    return this.http.get(this.baseUrl+'getLastWeek?id='+moh)
       .map(this.parseData)
       .catch(this.handleError);
   }
