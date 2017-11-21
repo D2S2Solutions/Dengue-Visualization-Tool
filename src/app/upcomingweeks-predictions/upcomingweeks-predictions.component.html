@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="x_title">
-          <h2>Dengue Predictions for week from {{startDate | date}} to {{endDate | date}}
+          <h2>Dengue Predictions for week ending on {{endDate | date}}
           </h2>
           <small></small>
           <div class="filter">
@@ -86,7 +86,7 @@
 
     <div class="x_panel">
       <div class="x_title">
-        <h2> Predicted Dengue Cases Summary</h2>
+        <h2>Predicted Dengue Cases & Levels Summary</h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -112,8 +112,19 @@
           <tr>
             <th>#</th>
             <th>MOH</th>
-            <th>Predicted Dengue Cases</th>
-            <th>Predicted Dengue Level</th>
+            <th colspan="3">Predicted Dengue Cases</th>
+            <th colspan="3">Predicted Dengue Level</th>
+            <!--<th>R-Squared</th>-->
+          </tr>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>+1 week</th>
+            <th>+2 weeks</th>
+            <th>+2 weeks</th>
+            <th>+1 week</th>
+            <th>+2 weeks</th>
+            <th>+2 weeks</th>
             <!--<th>R-Squared</th>-->
           </tr>
           </thead>
@@ -122,6 +133,10 @@
             <th scope="row">{{i+1 }}</th>
             <td>{{this.regressionLabels[i]}}</td>
             <td>{{this.regressionData[i]}}</td>
+            <td>{{this.regressionData[i]}}</td>
+            <td>{{this.regressionData[i]}}</td>
+            <td>{{this.classificationData[i]}}</td>
+            <td>{{this.classificationData[i]}}</td>
             <td>{{this.classificationData[i]}}</td>
           </tr>
           </tbody>

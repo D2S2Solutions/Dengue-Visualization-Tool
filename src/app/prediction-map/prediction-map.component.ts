@@ -57,7 +57,11 @@ export class PredictionMapComponent implements OnInit {
             this.markers.push(markerOb);
           }
 
-
+          if(this.district!=='0'){
+            this.zoom=12;
+          }else{
+            this.zoom=8;
+          }
         },
         function (error) {
           alert('Error happened' + error);

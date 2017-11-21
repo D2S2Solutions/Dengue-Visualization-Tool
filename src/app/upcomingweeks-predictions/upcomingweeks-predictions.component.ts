@@ -162,11 +162,27 @@ export class UpcomingweeksPredictionsComponent implements OnInit,AfterViewInit {
           this.classificationDataset.push(
             {
               label: '+3 weeks',
-              backgroundColor: '#409e90',
+              backgroundColor: '#7095d1',
               data: this.classificationData,
             }
           );
 
+          this.classificationDataset.push(
+            {
+              label: '+2 weeks',
+              backgroundColor: '#0fa80a',
+              data: [1,1,1],
+            }
+          );
+
+
+          this.classificationDataset.push(
+            {
+              label: '+1 weeks',
+              backgroundColor: '#c9830a',
+              data: [1,2,1],
+            }
+          );
 
           this.setGraphData();
         },

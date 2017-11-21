@@ -13,26 +13,25 @@ export class UserService extends DataService{
   }
 
   login(userName, password) {
-    // localStorage.setItem('auth_token', 'sdfsdf');
-    // this.loggedIn = true;
+    localStorage.setItem('auth_token', 'sdfsdf');
+    this.loggedIn = true;
     // const headers = new Headers();
     // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http
-      .post(
-        this.baseUrl+'login',
-        { userName,password },
-        // {headers}
-      )
-      .map((res: any) => {
-        alert(res);
-        if (res.success) {
-
-          localStorage.setItem('auth_token', res.userName);
-          this.loggedIn = true;
-        }
-
-        return res.success;
-      });
+    // return this.http
+    //   .post(
+    //     this.baseUrl+'login',
+    //     { userName,password },
+    //     // {headers}
+    //   )
+    //   .map((res: any) => {
+    //     alert(res);
+    //     if (res.success) {
+    //       localStorage.setItem('auth_token', res.userName);
+    //       this.loggedIn = true;
+    //     }
+    //
+    //     return res.success;
+    //   });
   }
 
   logout() {
