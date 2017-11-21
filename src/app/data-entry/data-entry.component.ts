@@ -56,12 +56,26 @@ export class DataEntryComponent implements OnInit {
   }
 
   private getLastWeek() {
+      this.week = null;
+      this.cases = null;
+      this.minTemp = null;
+      this.maxTemp = null;
+      this.meanTemp = null;
+      this.precipitation = null;
+      this.ndvi = null;
+      this.isDataAvailable =false;
       this.dataEntryService.getLastWeek(this.moh)
           .subscribe(
               (response) => {
                   console.log('RESPONSE');
                   console.log(response.weekNo);
                   this.week = response.weekNo+1;
+                  // this.cases = null;
+                  // this.minTemp = null;
+                  // this.maxTemp = null;
+                  // this.meanTemp = null;
+                  // this.precipitation = null;
+                  // this.ndvi = null;
                   this.isDataAvailable =true;
               },
               function (error) {
